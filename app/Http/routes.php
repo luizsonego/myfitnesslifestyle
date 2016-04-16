@@ -14,3 +14,14 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::group(['prefix' => 'admin'], function() {
+	Route::group(['prefix' => 'trainers'], function() {
+		Route::get('/','TrainerController@index')->name('admin-show-all-trainers');
+		Route::get('/create','TrainerController@create')->name('admin-create-trainer');
+		Route::post('/store','TrainerController@store')->name('admin-store-trainer');
+		Route::get('/update','TrainerController@save')->name('admin-update-trainer');
+	});
+});
+
+

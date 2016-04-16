@@ -17,7 +17,7 @@ class CreateTrainersTable extends Migration
             $table->string('first_name',155);
 	    $table->string('last_name',155);
 	    $table->string('avatar',155);
-            $table->string('description,255');
+            $table->string('description',255);
             $table->timestamps();
             $table->softDeletes();
         });
