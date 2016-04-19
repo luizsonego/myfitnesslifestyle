@@ -1,3 +1,3 @@
 <div>
-I am a trainer
+	I am in the index file
 </div>

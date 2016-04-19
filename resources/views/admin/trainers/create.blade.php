@@ -5,7 +5,7 @@
 	<label for="lastName">Last Name</label>
 	<input type="text" name="last_name" id="lastName" value="" placeholder="Last Name" />
 	<label for="avatar">Imaage</label>
-	<input type="file"  id="avator" name="avator"/>
+	<input type="file"  id="avatar" name="avatar"/>
 	<label for="description">Summery</label>
 	<textarea name="description" id="description"></textarea>
 	<input type="submit" value="Create" />

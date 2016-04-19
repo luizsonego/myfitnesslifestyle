@@ -16,7 +16,7 @@ class TrainerController extends Controller
     public function index()
     {
 	$data = array(
-		'trainers' => Trainer::all();
+		'trainers' => Trainer::all(),
         );
         return view('admin.trainers.index');
     }
@@ -43,11 +43,11 @@ class TrainerController extends Controller
 	$trainer->first_name = $request->first_name;
 	$trainer->last_name = $request->last_name;
 	$trainer->description = $request->description;
-	$trainer->avatar = $request->avator->getClientOriginalNAme();
+	$trainer->avatar = $request->avatar->getClientOriginalNAme();
 	$trainer->save();
 	\File::makeDirectory('images/trainers/'.$trainer->id);
-	$img = \Image::make($request->avator)->save('images/trainers/'.$trainer->id.'/'.$request->avator->getClientOriginalName());
-	$trainer->avatar = $request->avator->getClientOriginalNAme();
+	$img = \Image::make($request->avatar)->save('images/trainers/'.$trainer->id.'/'.$request->avatar->getClientOriginalName());
+	$trainer->avatar = $request->avatar->getClientOriginalNAme();
     }
 
     /**
