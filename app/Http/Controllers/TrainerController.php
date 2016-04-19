@@ -38,10 +38,13 @@ class TrainerController extends Controller
     {
 	//print_r($request);
         $trainer =  new Trainer;
-	$trainer->frist_name = $request->first_name;
+	$trainer->first_name = $request->first_name;
 	$trainer->last_name = $request->last_name;
 	$trainer->description = $request->description;
-	print_r($trainer);
+	$img = \Image::make($request->avator)->save('images/trainers/'.$request->avator->getClientOriginalName());
+	$trainer->avatar = $request->avator->getClientOriginalNAme();
+	$trainer->save();
+	echo "<pre>"; print_r($trainer); echo "</pre>";
 	//$trainer->avatar = $request->avatar;
 	
 	
