@@ -15,6 +15,9 @@ class TrainerController extends Controller
      */
     public function index()
     {
+	$data = array(
+		'trainers' => Trainer::all();
+        );
         return view('admin.trainers.index');
     }
 
@@ -36,29 +39,15 @@ class TrainerController extends Controller
      */
     public function store(Request $request)
     {
-	//print_r($request);
         $trainer =  new Trainer;
 	$trainer->first_name = $request->first_name;
 	$trainer->last_name = $request->last_name;
 	$trainer->description = $request->description;
-	$img = \Image::make($request->avator)->save('images/trainers/'.$request->avator->getClientOriginalName());
 	$trainer->avatar = $request->avator->getClientOriginalNAme();
 	$trainer->save();
-	echo "<pre>"; print_r($trainer); echo "</pre>";
-	//$trainer->avatar = $request->avatar;
-	
-	
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
+	\File::makeDirectory('images/trainers/'.$trainer->id);
+	$img = \Image::make($request->avator)->save('images/trainers/'.$trainer->id.'/'.$request->avator->getClientOriginalName());
+	$trainer->avatar = $request->avator->getClientOriginalNAme();
     }
 
     /**
@@ -69,7 +58,12 @@ class TrainerController extends Controller
      */
     public function edit($id)
     {
-        return view('admin.trainers.update');
+	$trainer = new Trainer();
+	$data = array(
+		'trainer'=> $trainer->find($id),
+	);
+
+        return view('admin.trainers.update',$data);
     }
 
     /**
@@ -79,9 +73,20 @@ class TrainerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $trainer = Trainer::find($request->id);
+
+	if($request->hasFile('avatar')) {
+		\File::delete('images/trainers/'.$trainer->id.'/'.$trainer->avatar);
+		$img = \Image::make($request->avatar)->save('images/trainers/'.$trainer->id.'/'.$request->avatar->getClientOriginalName());
+		$trainer->avatar = $request->avatar->getClientOriginalNAme();
+	}
+	$trainer->first_name = $request->first_name;
+        $trainer->last_name = $request->last_name;
+        $trainer->description = $request->description;
+	$trainer->save();
+
     }
 
     /**
@@ -92,6 +97,7 @@ class TrainerController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $trainer = Trainer::find($request->id);
+	$trainer->delete();
     }
 }

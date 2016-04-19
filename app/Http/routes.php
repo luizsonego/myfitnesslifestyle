@@ -20,7 +20,8 @@ Route::group(['prefix' => 'admin'], function() {
 		Route::get('/','TrainerController@index')->name('admin-show-all-trainers');
 		Route::get('/create','TrainerController@create')->name('admin-create-trainer');
 		Route::post('/store','TrainerController@store')->name('admin-store-trainer');
-		Route::get('/update','TrainerController@save')->name('admin-update-trainer');
+		Route::post('/update','TrainerController@update')->name('admin-update-trainer');
+		Route::get('/edit/{id}','TrainerController@edit')->name('admin-edit-trainer');
 	});
 });
 
