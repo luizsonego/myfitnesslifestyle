@@ -23,6 +23,14 @@ Route::group(['prefix' => 'admin'], function() {
 		Route::post('/update','TrainerController@update')->name('admin-update-trainer');
 		Route::get('/edit/{id}','TrainerController@edit')->name('admin-edit-trainer');
 	});
+        Route::group(['prefix' => 'categories'], function() {
+                Route::get('/','CategoryController@index')->name('admin-show-all-category');
+                Route::get('/create','CategoryController@create')->name('admin-create-category');
+                Route::post('/store','CategoryController@store')->name('admin-store-category');
+                Route::post('/update','CategoryController@update')->name('admin-update-category');
+                Route::get('/edit/{id}','CategoryController@edit')->name('admin-edit-category');
+        });
+
 });
 
 

@@ -47,7 +47,6 @@ class TrainerController extends Controller
 	$trainer->save();
 	\File::makeDirectory('images/trainers/'.$trainer->id);
 	$img = \Image::make($request->avatar)->save('images/trainers/'.$trainer->id.'/'.$request->avatar->getClientOriginalName());
-	$trainer->avatar = $request->avatar->getClientOriginalNAme();
     }
 
     /**

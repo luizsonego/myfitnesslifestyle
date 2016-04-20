@@ -39,11 +39,11 @@ class Article extends Model
     }
 
     /**
-     * Get the trainer for the article.
+     * Get the author for the article.
      */
-    public function trainer()
+    public function author()
     {
-        return $this->belongsTo('App\Trainer');
+        return $this->belongsTo('App\Author');
     }
 
 }

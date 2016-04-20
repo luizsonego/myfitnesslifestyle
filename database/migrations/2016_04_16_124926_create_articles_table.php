@@ -15,10 +15,11 @@ class CreateArticlesTable extends Migration
         Schema::create('articles', function (Blueprint $table) {
             $table->bigIncrements('id');
 	    $table->bigInteger('category_id');
-            $table->bigInteger('trainer_id');
+            $table->bigInteger('author_id');
             $table->string('title',255);
-            $table->string('summary',255);
+            $table->text('summary');
 	    $table->text('content');
+	    $table->tinyInteger('active');
             $table->timestamps();
             $table->softDeletes();
         });

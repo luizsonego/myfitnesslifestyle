@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCategoriesTable extends Migration
+class CreateAuthorsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,14 +12,17 @@ class CreateCategoriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('categories', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('name');
+      Schema::create('authors', function (Blueprint $table) {
+	    $table->bigIncrements('id');
+            $table->string('first_name',155);
+            $table->string('last_name',155);
+            $table->string('avatar',155);
             $table->text('description');
-	    $table->tinyInteger('active');
+            $table->tinyInteger('active');
             $table->timestamps();
             $table->softDeletes();
-        });
+	});
+
     }
 
     /**
@@ -29,6 +32,6 @@ class CreateCategoriesTable extends Migration
      */
     public function down()
     {
-        Schema::drop('categories');
+         Schema::drop('authors');
     }
 }

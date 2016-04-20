@@ -5,7 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Trainer extends Model
+class Author extends Model
 {
     use SoftDeletes;
 
@@ -29,5 +29,13 @@ class Trainer extends Model
      * @var array
      */
     protected $dates = ['deleted_at'];
+
+    /**
+     * Get articles for the author.
+     */
+    public function articles()
+    {
+        return $this->hasMany('App\Articles');
+    }
 
 }

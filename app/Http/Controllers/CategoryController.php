@@ -15,7 +15,10 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        $data = array (
+		'categories' => Category::all(),
+	);
+	return view('admin.categories.index');
     }
 
     /**
@@ -25,7 +28,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.categories.create');
     }
 
     /**
@@ -36,18 +39,10 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
+        $category =  new Category;
+        $category->name = $request->name;
+        $trainer->description = $request->description;
+        $category->save();
     }
 
     /**
@@ -58,7 +53,10 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data = array(
+		'category' => Category::find($id),
+	);
+	return view('admin.categories.edit');
     }
 
     /**
@@ -68,9 +66,12 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+	$category = Category::find($request->id);
+	$category->name = $request->name;
+	$category->description = $request->description;
+	$category->save();
     }
 
     /**
@@ -81,6 +82,7 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+	$category = Category::find($request->id);
+	$category->delete();
     }
 }
