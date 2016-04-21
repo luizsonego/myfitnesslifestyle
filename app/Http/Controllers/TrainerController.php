@@ -18,7 +18,7 @@ class TrainerController extends Controller
 	$data = array(
 		'trainers' => Trainer::all(),
         );
-        return view('admin.trainers.index');
+        return view('admin.trainers.index',$data);
     }
 
     /**
