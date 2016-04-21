@@ -15,6 +15,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('cms/login','CmsController@login')->name('admin-login');
+
 Route::group(['prefix' => 'admin'], function() {
 	Route::group(['prefix' => 'trainers'], function() {
 		Route::get('/','TrainerController@index')->name('admin-show-all-trainers');
