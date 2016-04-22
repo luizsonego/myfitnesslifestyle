@@ -18,7 +18,7 @@ class AuthorController extends Controller
         $data = array(
                 'authors' => Author::all(),
         );
-        return view('admin.authors.index');
+        return view('admin.authors.index',$data);
     }
 
     /**
@@ -45,7 +45,7 @@ class AuthorController extends Controller
         $author->description = $request->description;
         $author->avatar = $request->avatar->getClientOriginalNAme();
         $author->save();
-        \File::makeDirectory('images/trainers/'.$author->id);
+        \File::makeDirectory('images/authors/'.$author->id);
         $img = \Image::make($request->avatar)->save('images/authors/'.$author->id.'/'.$request->avatar->getClientOriginalName());
     }
 
@@ -94,9 +94,9 @@ class AuthorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        $trainer = Author::find($request->id);
+        $author = Author::find($request->id);
         $author->delete();
     }
 

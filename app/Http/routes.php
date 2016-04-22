@@ -27,11 +27,20 @@ Route::group(['prefix' => 'admin'], function() {
 		Route::get('/delete/{id}','TrainerController@destroy')->name('admin-delete-trainer');
 	});
         Route::group(['prefix' => 'categories'], function() {
-                Route::get('/','CategoryController@index')->name('admin-show-all-category');
+                Route::get('/','CategoryController@index')->name('admin-show-all-categories');
                 Route::get('/create','CategoryController@create')->name('admin-create-category');
                 Route::post('/store','CategoryController@store')->name('admin-store-category');
                 Route::post('/update','CategoryController@update')->name('admin-update-category');
                 Route::get('/edit/{id}','CategoryController@edit')->name('admin-edit-category');
+		Route::get('/delete/{id}','CategoryController@destroy')->name('admin-delete-category');
+        });
+	Route::group(['prefix' => 'authors'], function() {
+                Route::get('/','AuthorController@index')->name('admin-show-all-authors');
+                Route::get('/create','AuthorController@create')->name('admin-create-author');
+                Route::post('/store','AuthorController@store')->name('admin-store-author');
+                Route::post('/update','AuthorController@update')->name('admin-update-author');
+                Route::get('/edit/{id}','AuthorController@edit')->name('admin-edit-author');
+                Route::get('/delete/{id}','AuthorController@destroy')->name('admin-delete-author');
         });
 
 });

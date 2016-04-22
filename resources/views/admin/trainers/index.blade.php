@@ -7,13 +7,14 @@
                 <div class="row">
                         <div class="col-lg-4">
                                 <ul>
-                                        <li>Trainers</li>
+                                        <li><a href="{{route('admin-show-all-trainers')}}">Trainers</a></li>
                                         <li>Authors</li>
                                         <li>Articles</li>
                                         <li>Categories</li>
                                 </ul>
                         </div>
 			<div class="col-lg-8">
+			<a href="{{route('admin-create-trainer')}}">Create</a>
 	@foreach ($trainers as $trainer)
     		<div class="row">
 			<div class="col-lg-3">

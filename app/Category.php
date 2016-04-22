@@ -30,7 +30,7 @@ class Category extends Model
      * @var array
      */
     protected $dates = ['deleted_at'];
-    
+
     /**
      * Get the articles for the category.
      */
@@ -38,5 +38,5 @@ class Category extends Model
     {
         return $this->hasMany('App\Article');
     }
- 
+
 }

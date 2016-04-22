@@ -3,9 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
 use App\Http\Requests;
-
+use App\Category;
 class CategoryController extends Controller
 {
     /**
@@ -18,7 +17,7 @@ class CategoryController extends Controller
         $data = array (
 		'categories' => Category::all(),
 	);
-	return view('admin.categories.index');
+	return view('admin.categories.index',$data);
     }
 
     /**
@@ -41,7 +40,7 @@ class CategoryController extends Controller
     {
         $category =  new Category;
         $category->name = $request->name;
-        $trainer->description = $request->description;
+        $category->description = $request->description;
         $category->save();
     }
 
@@ -56,7 +55,7 @@ class CategoryController extends Controller
         $data = array(
 		'category' => Category::find($id),
 	);
-	return view('admin.categories.edit');
+	return view('admin.categories.update',$data);
     }
 
     /**
@@ -80,7 +79,7 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
 	$category = Category::find($request->id);
 	$category->delete();

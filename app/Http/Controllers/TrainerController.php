@@ -94,7 +94,7 @@ class TrainerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
         $trainer = Trainer::find($request->id);
 	$trainer->delete();
