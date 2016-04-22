@@ -21,7 +21,7 @@ class Article extends Model
      *
      * @var array
      */
-    protected $fillable = ['name','title','summary','category_id','author_id'];
+    protected $fillable = ['name','title','summary','content','category_id','author_id'];
 
     /**
      * The attributes that should be mutated to dates.
@@ -29,7 +29,7 @@ class Article extends Model
      * @var array
      */
     protected $dates = ['deleted_at'];
-    
+
     /**
      * Get the category for the article.
      */
@@ -46,4 +46,25 @@ class Article extends Model
         return $this->belongsTo('App\Author');
     }
 
+   /**
+    * Get the images for the article
+    *
+    * @param json
+    * @return Images in an array
+    */
+    public function getImagesAttribute($value)
+    {
+	return json_decode($value);
+    }
+
+    /**
+     * Set images for the article
+     *
+     * @param array
+     * @return json
+     */
+     public function setImagesAttribute($value)
+     {
+	$this->attribute['images'] = json_encode($value);
+     }
 }
