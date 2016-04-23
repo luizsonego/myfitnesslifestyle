@@ -42,7 +42,16 @@ Route::group(['prefix' => 'admin'], function() {
                 Route::get('/edit/{id}','AuthorController@edit')->name('admin-edit-author');
                 Route::get('/delete/{id}','AuthorController@destroy')->name('admin-delete-author');
         });
-
+	Route::group(['prefix' => 'articles'], function() {
+                Route::get('/','ArticleController@index')->name('admin-show-all-articles');
+                Route::get('/create','ArticleController@create')->name('admin-create-article');
+                Route::post('/store','ArticleController@store')->name('admin-store-article');
+                Route::post('/update','ArticleController@update')->name('admin-update-article');
+                Route::get('/edit/{id}','ArticleController@edit')->name('admin-edit-article');
+                Route::get('/delete/{id}','ArticleController@destroy')->name('admin-delete-article');
+		Route::post('/images','ArticleController@addImages')->name('admin-add-article-images');
+		Route::get('/delete/{id}/image/{img}','ArticleController@destroyImage')->name('admin-delete-article-image');
+        });
 });
 
 

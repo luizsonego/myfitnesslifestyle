@@ -21,7 +21,7 @@ class Article extends Model
      *
      * @var array
      */
-    protected $fillable = ['name','title','summary','content','category_id','author_id'];
+    protected $fillable = ['images','name','title','summary','content','category_id','author_id'];
 
     /**
      * The attributes that should be mutated to dates.
@@ -63,8 +63,9 @@ class Article extends Model
      * @param array
      * @return json
      */
-     public function setImagesAttribute($value)
+     public function setImagesAttribute($images)
      {
-	$this->attribute['images'] = json_encode($value);
+	$this->attributes['images'] = json_encode($images);
      }
+
 }
