@@ -55,19 +55,17 @@ class ArticleController extends Controller
 	$article->content = $request->content;
 	$article->category_id = $request->category_id;
 	$article->author_id = $request->author_id;
-
-	$jsonImg = [];
-        foreach($request->images as $img) {
-                $jsonImg[] = $img->getClientOriginalName();
-        }
-
-	$article->images = $jsonImg;
 	$article->save();
 
 	\File::makeDirectory('images/articles/'.$article->id);
-	foreach($request->images as $img) {
-        	$img = \Image::make($img)->save('images/articles/'.$article->id.'/'.$img->getClientOriginalName());
-	}
+	$imageNames = [];
+        foreach($request->images as $img) {
+		$name = $this->generateRandomString().'.'.pathinfo($img->getClientOriginalName(), PATHINFO_EXTENSION);
+		\Image::make($img)->save('images/articles/'.$article->id.'/'.$name);
+		$imageNames[] = $name;
+        }
+
+	$article->update(['images'=>$imageNames]);
     }
 
     /**
@@ -186,16 +184,6 @@ class ArticleController extends Controller
 
         $article->update(['images'=>array_merge($images,$newImages)]);
 
-    }
-
-    public function generateRandomString($length = 10) {
-    	$characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-    	$charactersLength = strlen($characters);
-    	$randomString = '';
-    	for ($i = 0; $i < $length; $i++) {
-        	$randomString .= $characters[rand(0, $charactersLength - 1)];
-    	}
-    	return $randomString;
     }
 
 }
