@@ -23,6 +23,8 @@ class CreateArticlesTable extends Migration
 	    $table->tinyInteger('active');
             $table->timestamps();
             $table->softDeletes();
+	    $table->index('category_id');
+	    $table->index('author_id');
         });
     }
 

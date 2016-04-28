@@ -13,7 +13,7 @@ class CreateAchievementsTable extends Migration
     public function up()
     {
         Schema::create('achievements', function (Blueprint $table) {
-            $table->increments('id');
+            $table->bigIncrements('id');
             $table->bigInteger('trainer_id');
             $table->string('images',255);
             $table->string('title',255);
@@ -22,6 +22,7 @@ class CreateAchievementsTable extends Migration
 	    $table->date('dated');
             $table->timestamps();
             $table->softDeletes();
+	    $table->index('trainer_id');
         });
     }
 

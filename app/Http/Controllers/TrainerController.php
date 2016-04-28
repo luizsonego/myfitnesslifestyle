@@ -83,7 +83,7 @@ class TrainerController extends Controller
 	}
 	$trainer->first_name = $request->first_name;
         $trainer->last_name = $request->last_name;
-        $trainer->description = $request->description;
+       $trainer->description = $request->description;
 	$trainer->save();
 
     }
