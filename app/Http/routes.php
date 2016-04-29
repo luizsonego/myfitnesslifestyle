@@ -52,6 +52,17 @@ Route::group(['prefix' => 'admin'], function() {
 		Route::post('/images','ArticleController@addImages')->name('admin-add-article-images');
 		Route::get('/delete/{id}/image/{img}','ArticleController@destroyImage')->name('admin-delete-article-image');
         });
+        Route::group(['prefix' => 'achievements'], function() {
+                Route::get('/','AchievementController@index')->name('admin-show-all-achievements');
+                Route::get('/create','AchievementController@create')->name('admin-create-achievement');
+                Route::post('/store','AchievementController@store')->name('admin-store-achievement');
+                Route::post('/update','AchievementController@update')->name('admin-update-achievement');
+                Route::get('/edit/{id}','AchievementController@edit')->name('admin-edit-achievement');
+                Route::get('/delete/{id}','AchievementController@destroy')->name('admin-delete-achievement');
+		Route::post('/images','AchievementController@addImages')->name('admin-add-achievement-images');
+                Route::get('/delete/{id}/image/{img}','AchievementController@destroyImage')->name('admin-delete-achievement-image');
+        });
+
 });
 
 
