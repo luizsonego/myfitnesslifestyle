@@ -15,9 +15,19 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+// Authentication routes...
+Route::get('auth/login', 'Auth\AuthController@getLogin');
+Route::post('auth/login', 'Auth\AuthController@postLogin');
+Route::get('auth/logout', 'Auth\AuthController@getLogout');
+
+// Registration routes...
+Route::get('auth/register', 'Auth\AuthController@getRegister');
+Route::post('auth/register', 'Auth\AuthController@postRegister');
+
 Route::get('cms/login','CmsController@login')->name('admin-login');
 
 Route::group(['prefix' => 'admin'], function() {
+	Route::get('/','AdminController@index')->name('admin-dashboard');
 	Route::group(['prefix' => 'trainers'], function() {
 		Route::get('/','TrainerController@index')->name('admin-show-all-trainers');
 		Route::get('/create','TrainerController@create')->name('admin-create-trainer');
