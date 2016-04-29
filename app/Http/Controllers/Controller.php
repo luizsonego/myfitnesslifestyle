@@ -7,6 +7,7 @@ use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesResources;
+use App\User;
 
 class Controller extends BaseController
 {
@@ -26,4 +27,14 @@ class Controller extends BaseController
         	}
         	return $randomString;
     	}
+
+	/*
+         * Create a new User
+         * @param aray with type, email, password
+         * @return user object
+         **/
+	protected function createNewUser($data) {
+		return User::create($data);
+	}
+
 }

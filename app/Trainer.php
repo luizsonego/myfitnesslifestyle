@@ -21,7 +21,7 @@ class Trainer extends Model
      *
      * @var array
      */
-    protected $fillable = ['first_name','last_name','avatar','description'];
+    protected $fillable = ['first_name','last_name','avatar','description','user_id'];
 
     /**
      * The attributes that should be mutated to dates.

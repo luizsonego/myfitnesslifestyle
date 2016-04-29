@@ -8,6 +8,7 @@ use App\Trainer;
 
 class TrainerController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
@@ -39,14 +40,37 @@ class TrainerController extends Controller
      */
     public function store(Request $request)
     {
-        $trainer =  new Trainer;
-	$trainer->first_name = $request->first_name;
-	$trainer->last_name = $request->last_name;
-	$trainer->description = $request->description;
-	$trainer->avatar = $request->avatar->getClientOriginalNAme();
-	$trainer->save();
-	\File::makeDirectory('images/trainers/'.$trainer->id);
-	$img = \Image::make($request->avatar)->save('images/trainers/'.$trainer->id.'/'.$request->avatar->getClientOriginalName());
+        $this->validate($request, [
+                'first_name' => 'required',
+                'last_name' => 'required',
+                'email' => 'required|email|max:255|unique:users',
+                'password' => 'required|min:6',
+                'description' => 'required',
+             	'avatar' => 'required|image'
+        ]);
+	
+	if(isset($validator) && $validator->fails()) {
+            return redirect('/admin/trainer/create')->withErrors($validator)->withInput();
+        } else {
+
+		$user = $this->createNewUser([
+			'email' => $request->email,
+            		'password' => bcrypt($request->password),
+        	]);
+
+        	$trainer = Trainer::create([
+                	'first_name' => $request->first_name,
+                	'last_name' => $request->last_name,
+                	'description' => $request->description,
+                	'avatar' => $request->avatar->getClientOriginalNAme(),
+                	'user_id'=> $user->id,
+        	]);
+
+	        \File::makeDirectory('images/trainers/'.$trainer->id);
+       		$img = \Image::make($request->avatar)->save('images/trainers/'.$trainer->id.'/'.$request->avatar->getClientOriginalName());
+
+		return redirect('/admin/trainer/');
+	}
     }
 
     /**
@@ -83,7 +107,7 @@ class TrainerController extends Controller
 	}
 	$trainer->first_name = $request->first_name;
         $trainer->last_name = $request->last_name;
-       $trainer->description = $request->description;
+        $trainer->description = $request->description;
 	$trainer->save();
 
     }
