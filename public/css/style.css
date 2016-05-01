@@ -1,0 +1,83 @@
+.paddingSideNone {
+  padding-left: 0; }
+
+.adminHeader {
+  text-align: center;
+  font-size: 20px;
+  margin: 5px 0 10px 0;
+  border-bottom: 1px solid #EFEFEF;
+  padding: 0 0 10px 0; }
+
+.adminNavigation {
+  height: 100%;
+  background: red; }
+  .adminNavigation ul {
+    list-style: none;
+    padding: 0;
+    margin: 0; }
+    .adminNavigation ul li a {
+      text-transform: uppercase;
+      color: #FFF;
+      display: block;
+      text-decoration: none;
+      padding: 10px 5px;
+      border-bottom: 1px solid;
+      text-align: left;
+      font-size: 17px; }
+    .adminNavigation ul li a:hover {
+      color: #FFF;
+      display: block;
+      text-decoration: none; }
+
+.adminTitle {
+  margin: 20px 0 20px 0; }
+  .adminTitle h1 {
+    margin: 0;
+    float: left;
+    width: 80%;
+    .display: inline-block; }
+  .adminTitle .createLink {
+    display: inline-block;
+    float: right;
+    width: 20%; }
+    .adminTitle .createLink a {
+      text-transform: uppercase;
+      display: block;
+      width: 75%;
+      text-align: center;
+      background: red;
+      color: #FFF;
+      text-decoration: none;
+      font-size: 17px;
+      padding: 5px;
+      margin: 0 auto; }
+    .adminTitle .createLink a:hover {
+      text-decoration: none; }
+
+.adminContentContainer {
+  margin: 25px 0 15px 0;
+  border: 1px solid #EFEFEF;
+  padding: 25px; }
+  .adminContentContainer p {
+    margin: 0;
+    font-size: 15px;
+    text-align: center;
+    background: red;
+    color: #FFF;
+    padding: 5px 0; }
+  .adminContentContainer img {
+    margin: 5px 0 0 0;
+    display: block;
+    width: 100%; }
+
+.adminActions {
+  color: #000;
+  font-size: 18px;
+  display: inline-block;
+  padding: 0 5px;
+  text-decoration: none; }
+
+.adminActions:hover {
+  text-decoration: none; }
+
+/*# sourceMappingURL=style.css.map */

@@ -57,19 +57,21 @@ class TrainerController extends Controller
 			'email' => $request->email,
             		'password' => bcrypt($request->password),
         	]);
+		
+		$avatarName = $this->generateRandomString().'.'.pathinfo($request->avatar->getClientOriginalNAme(), PATHINFO_EXTENSION);
 
         	$trainer = Trainer::create([
                 	'first_name' => $request->first_name,
                 	'last_name' => $request->last_name,
                 	'description' => $request->description,
-                	'avatar' => $request->avatar->getClientOriginalNAme(),
+                	'avatar' => $avatarName,
                 	'user_id'=> $user->id,
         	]);
 
 	        \File::makeDirectory('images/trainers/'.$trainer->id);
-       		$img = \Image::make($request->avatar)->save('images/trainers/'.$trainer->id.'/'.$request->avatar->getClientOriginalName());
+       		$img = \Image::make($request->avatar)->save('images/trainers/'.$trainer->id.'/'.$avatarName);
 
-		return redirect('/admin/trainer/');
+		return redirect('/admin/trainers');
 	}
     }
 
@@ -98,17 +100,37 @@ class TrainerController extends Controller
      */
     public function update(Request $request)
     {
-        $trainer = Trainer::find($request->id);
-
-	if($request->hasFile('avatar')) {
-		\File::delete('images/trainers/'.$trainer->id.'/'.$trainer->avatar);
-		$img = \Image::make($request->avatar)->save('images/trainers/'.$trainer->id.'/'.$request->avatar->getClientOriginalName());
-		$trainer->avatar = $request->avatar->getClientOriginalNAme();
+	 $trainer = Trainer::find($request->id);
+	 $user = $trainer->user;
+	 $this->validate($request, [
+                 'first_name' => 'required',
+                 'last_name' => 'required',
+                 'email' => 'required|email|max:255|unique:users,email,'.$user->id,
+                 'description' => 'required',
+                 'avatar' => 'image'
+	 ]);
+  
+	if(isset($validator) && $validator->fails()) {
+              return redirect('/admin/trainer/edit',['id'=>$request->id])->withErrors($validator)->withInput();
+        } else {
+		$avatar = '';
+		if($request->hasFile('avatar')) {
+			$avatar = $this->generateRandomString().'.'.pathinfo($request->avatar->getClientOriginalNAme(), PATHINFO_EXTENSION);
+                 	\File::delete('images/trainers/'.$trainer->id.'/'.$trainer->avatar);
+                 	$img = \Image::make($request->avatar)->save('images/trainers/'.$trainer->id.'/'.$avatar);
+         	} else {
+			$avatar = $trainer->avatar;
+		}  
+		
+		$user->update(['email' => $request->email]);
+     
+		$trainer->update([
+			'first_name' => $request->first_name,
+			'last_name' => $request->last_name,
+			'description' => $request->description,
+			'avatar' => $avatar
+		]);
 	}
-	$trainer->first_name = $request->first_name;
-        $trainer->last_name = $request->last_name;
-        $trainer->description = $request->description;
-	$trainer->save();
 
     }
 
@@ -123,4 +145,18 @@ class TrainerController extends Controller
         $trainer = Trainer::find($request->id);
 	$trainer->delete();
     }
+
+    /**
+     * Change Status of Trainer
+     *
+     * @param int
+     */
+     public function activate(Request $request)
+     {
+	$trainer = Trainer::find($request->id);
+	$trainer->active = $request->active;
+	$trainer->save();
+     }
+
+
 }

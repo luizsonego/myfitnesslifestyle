@@ -30,4 +30,13 @@ class Trainer extends Model
      */
     protected $dates = ['deleted_at'];
 
+    /**
+     * Get User
+     *
+     **/
+     public function user() {
+     	return $this->belongsTo('App\User');
+     }
+
 }
+

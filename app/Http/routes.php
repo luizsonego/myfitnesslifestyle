@@ -35,6 +35,7 @@ Route::group(['prefix' => 'admin'], function() {
 		Route::post('/update','TrainerController@update')->name('admin-update-trainer');
 		Route::get('/edit/{id}','TrainerController@edit')->name('admin-edit-trainer');
 		Route::get('/delete/{id}','TrainerController@destroy')->name('admin-delete-trainer');
+		Route::get('/activate/{id}','TrainerController@destroy')->name('admin-activate-trainer');
 	});
         Route::group(['prefix' => 'categories'], function() {
                 Route::get('/','CategoryController@index')->name('admin-show-all-categories');
