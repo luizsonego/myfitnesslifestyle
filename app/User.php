@@ -29,4 +29,7 @@ class User extends Authenticatable
    	return $this->hasOne('App\Trainer');
    }
 
+   public function author() {
+        return $this->hasOne('App\Author');
+   }
 }

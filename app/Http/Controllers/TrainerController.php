@@ -153,7 +153,7 @@ class TrainerController extends Controller
      *
      * @param int
      */
-     public function activate(Request $request)
+     public function changeStatus(Request $request)
      {
 	$trainer = Trainer::find($request->id);
 	$trainer->active = $request->active;

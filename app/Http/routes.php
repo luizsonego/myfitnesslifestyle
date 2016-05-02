@@ -35,7 +35,7 @@ Route::group(['prefix' => 'admin'], function() {
 		Route::post('/update','TrainerController@update')->name('admin-update-trainer');
 		Route::get('/edit/{id}','TrainerController@edit')->name('admin-edit-trainer');
 		Route::get('/delete/{id}','TrainerController@destroy')->name('admin-delete-trainer');
-		Route::get('/activate/{id}','TrainerController@destroy')->name('admin-activate-trainer');
+		Route::get('/activate/{id}','TrainerController@changeStatus')->name('admin-activate-trainer');
 	});
         Route::group(['prefix' => 'categories'], function() {
                 Route::get('/','CategoryController@index')->name('admin-show-all-categories');
@@ -52,7 +52,8 @@ Route::group(['prefix' => 'admin'], function() {
                 Route::post('/update','AuthorController@update')->name('admin-update-author');
                 Route::get('/edit/{id}','AuthorController@edit')->name('admin-edit-author');
                 Route::get('/delete/{id}','AuthorController@destroy')->name('admin-delete-author');
-        });
+        	Route::get('/activate/{id}','AuthorController@changeStatus')->name('admin-activate-author');
+	});
 	Route::group(['prefix' => 'articles'], function() {
                 Route::get('/','ArticleController@index')->name('admin-show-all-articles');
                 Route::get('/create','ArticleController@create')->name('admin-create-article');

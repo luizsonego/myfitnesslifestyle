@@ -21,7 +21,7 @@ class Author extends Model
      *
      * @var array
      */
-    protected $fillable = ['first_name','last_name','avatar','description'];
+    protected $fillable = ['user_id','first_name','last_name','avatar','description'];
 
     /**
      * The attributes that should be mutated to dates.
@@ -37,5 +37,13 @@ class Author extends Model
     {
         return $this->hasMany('App\Articles');
     }
+  
+    /**
+     * Get User
+     *
+     **/
+     public function user() {
+        return $this->belongsTo('App\User');
+     }
 
 }
