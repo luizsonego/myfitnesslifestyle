@@ -20,11 +20,11 @@
 					@foreach ($trainers as $trainer)
     						<div class="row">
 							<div class="col-lg-3">
-								<p>{{ $trainer->first_name }} {{ $trainer->last_name }}</p>
+								<p class="name">{{ $trainer->first_name }} {{ $trainer->last_name }}</p>
 								<img src="/images/trainers/{{$trainer->id}}/{{$trainer->avatar}}" />
 							</div>
 							<div class="col-lg-7">
-								{{ $trainer->description }}
+								{!!$trainer->description  !!} 
 							</div>
 							<div class="col-lg-2">
 								{{ Html::linkRoute('admin-edit-trainer','',['id'=>$trainer->id],['class'=>'adminActions glyphicon glyphicon-pencil']) }}

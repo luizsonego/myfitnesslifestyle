@@ -3,34 +3,82 @@
 @section('title', 'My Fitness Lifestyle: Create a new Trainer')
 
 @section('body')
-	<div class="container">
-		<div class="row">
-			<div class="col-lg-4">
-				<ul>
-					<li>Trainers</li>
-					<li>Authors</li>
-					<li>Articles</li>
-					<li>Categories</li>
-				</ul>
-			</div>
-			<div class="col-lg-8">
-	{!! Form::open(['enctype'=>'multipart/form-data', 'name'=>'createTrainer','route' => 'admin-store-trainer','method'=>'post']) !!}
-		<label for="firstName">First Name <span>{{$errors->first('first_name')}}</span></label>
-		<input type="text" name="first_name" id="fistName" value="" placeholder="First Name" />
-                <label for="lastName">Last Name <span>{{$errors->first('last_name')}}</span></label>
-                <input type="text" name="last_name" id="lastName" value="" placeholder="Last Name" />
-		<label for="email">Email <span>{{$errors->first('email')}}</span></label>
-                <input type="email" name="email" id="email" value="" placeholder="Email Address" />
-                <label for="password">Password <span>{{$errors->first('password')}}</span></label>
-                <input type="password" name="password" id="password" value="" placeholder="Password" />
-		<label for="avatar">Imaage <span>{{$errors->first('image')}}</span></label>
-		<input type="file"  id="avatar" name="avatar"/>
-		<label for="description">Summery <span>{{$errors->first('description')}}</span></label>
-		<textarea name="description" id="description"></textarea>
-		<input type="submit" value="Create" />
-	{!! Form::close() !!}
+	<div class="container-fluid paddingSideNone">
+                <div class="row">
+                        <div class="col-lg-3">
+                                @include('admin.partials.navigation')
+                        </div>
+                        <div class="col-lg-9">
+				<div class="adminHeader">My Fitness Lifestyle CMS</div>
+                                <div class="adminTitle clearfix">
+                                        <h1>Add a New Trainer</h1>
+				</div>
+				{!! Form::open(['enctype'=>'multipart/form-data', 'name'=>'createTrainer','route' => 'admin-store-trainer','method'=>'post']) !!}
+					<div class="row marginBottom">
+						<div class="col-lg-2">
+							<label for="firstName">First Name</label>
+						</div>
+						<div class="col-lg-10">
+							{{ Form::text('first_name',null,['id'=>'firstName','placeholder'=>'First Name'])}}
+							 <span class="errors">{{$errors->first("first_name")}}</span>
+						</div>
+					</div>
+					<div class="row marginBottom">
+						<div class="col-lg-2">
+                					<label for="lastName">Last Name</label>
+						</div>
+						<div class="col-lg-10">
+							{{ Form::text('last_name',null,['id'=>'lastName','placeholder'=>'Last Name'])}}
+                					 <span class="errors">{{$errors->first("last_name")}}</span>
+						</div>
+					</div>
+					<div class="row marginBottom">
+						<div class="col-lg-2">
+							<label for="email">Email</label>
+						</div>
+						<div class="col-lg-10">
+							{{ Form::text('email',null,['id'=>'email','placeholder'=>'Email Address'])}}
+                					<span class="errors">{{$errors->first("email")}}</span>
+						</div>
+					</div>
+					<div class="row marginBottom">
+						<div class="col-lg-2">
+                					<label for="password">Password</label>
+						</div>
+						<div class="col-lg-10">
+							{{ Form::text('password',null,['id'=>'password','placeholder'=>'Password'])}}
+							<span class="errors">{{$errors->first("password")}}</span>
+						</div>
+					</div>
+					<div class="row marginBottom">
+						<div class="col-lg-2">
+							<label for="avatar">Image <span>{{$errors->first('image')}}</span></label>
+						</div>
+						<div class="col-lg-10">
+							<input type="file"  id="avatar" name="avatar"/>
+						</div>
+					</div>
+					<div class="row marginBottom">
+						<div class="col-lg-2">
+							<label for="description">Summery</label>
+						</div>
+						<div class="col-lg-10">
+							{{ Form::textarea('description',null,['id'=>'description','placeholder'=>'Trainer Description'])}}
+							<span class="errors">{{$errors->first("description")}}</span>
+						</div>
+					</div>
+					<div class="row marginBottom">
+						<div class="col-lg-12">
+							<input type="submit" value="Create" />
+						</div>
+					</div>
+				{!! Form::close() !!}
 			</div>
 		</div>
 	</div>
 
+
+<script>
+	CKEDITOR.replace( 'description' );
+</script>
 @endsection

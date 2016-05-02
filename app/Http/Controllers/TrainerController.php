@@ -130,6 +130,8 @@ class TrainerController extends Controller
 			'description' => $request->description,
 			'avatar' => $avatar
 		]);
+		
+		return redirect('admin/trainers');
 	}
 
     }
