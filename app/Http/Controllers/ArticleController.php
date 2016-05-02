@@ -186,4 +186,17 @@ class ArticleController extends Controller
 
     }
 
+    /**
+     * Change Status of Trainer
+     *
+     * @param int
+     */
+     public function changeStatus(Request $request)
+     {
+        $article = Article::find($request->id);
+        $article->active = $request->active;
+        $article->save();
+     }
+
+
 }

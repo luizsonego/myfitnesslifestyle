@@ -63,6 +63,7 @@ Route::group(['prefix' => 'admin'], function() {
                 Route::get('/delete/{id}','ArticleController@destroy')->name('admin-delete-article');
 		Route::post('/images','ArticleController@addImages')->name('admin-add-article-images');
 		Route::get('/delete/{id}/image/{img}','ArticleController@destroyImage')->name('admin-delete-article-image');
+		Route::get('/activate/{id}','ArticleController@changeStatus')->name('admin-activate-article');
         });
         Route::group(['prefix' => 'achievements'], function() {
                 Route::get('/','AchievementController@index')->name('admin-show-all-achievements');
