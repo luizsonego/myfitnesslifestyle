@@ -30,14 +30,14 @@ class ArticleController extends Controller
      */
     public function create()
     {
-	$categories = Category::all();
-	$categorySelect = [];
-	foreach($categories as $category) {
-		$categorySelect[$category->id] = $category->name;
+	$data = [];
+	foreach(Category::all() as $category) {
+		$data['categories'][$category->id] = $category->name;
 	}
-	$data = array(
-		'categories' =>$categorySelect
-	);
+
+	foreach(Author::all() as $author) {
+		$data['authors'][$author->id] = $author->first_name.' '.$author->last_name;
+	}
         return view('admin.articles.create',$data);
     }
 
@@ -49,23 +49,38 @@ class ArticleController extends Controller
      */
     public function store(Request $request)
     {
-	$article = new Article();
-        $article->title = $request->title;
-	$article->summary = $request->summary;
-	$article->content = $request->content;
-	$article->category_id = $request->category_id;
-	$article->author_id = $request->author_id;
-	$article->save();
+	
+	$this->validate($request, [
+                'title' => 'required',
+                'summary' => 'required',
+                'content' => 'required',
+                'category' => 'required',
+                'author' => 'required',
+                'images' => 'required|image'
+        ]);
 
-	\File::makeDirectory('images/articles/'.$article->id);
-	$imageNames = [];
-        foreach($request->images as $img) {
-		$name = $this->generateRandomString().'.'.pathinfo($img->getClientOriginalName(), PATHINFO_EXTENSION);
-		\Image::make($img)->save('images/articles/'.$article->id.'/'.$name);
-		$imageNames[] = $name;
-        }
+        if(isset($validator) && $validator->fails()) {
+            return redirect('/admin/articles/create')->withErrors($validator)->withInput();
+        } else {
+		$article = new Article();
+        	$article->title = $request->title;
+		$article->summary = $request->summary;
+		$article->content = $request->content;
+		$article->category_id = $request->category;
+		$article->author_id = $request->author;
+		$article->save();
 
-	$article->update(['images'=>$imageNames]);
+		\File::makeDirectory('images/articles/'.$article->id);
+		$imageNames = [];
+        	foreach($request->images as $img) {
+			$name = $this->generateRandomString().'.'.pathinfo($img->getClientOriginalName(), PATHINFO_EXTENSION);
+			\Image::make($img)->save('images/articles/'.$article->id.'/'.$name);
+			$imageNames[] = $name;
+        	}
+
+		$article->update(['images'=>$imageNames]);
+		return redirect('/admin/articles');
+	}
     }
 
     /**
