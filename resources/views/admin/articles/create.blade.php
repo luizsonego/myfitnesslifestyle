@@ -11,7 +11,7 @@
                         <div class="col-lg-9">
                                 <div class="adminHeader">My Fitness Lifestyle CMS</div>
                                 <div class="adminTitle clearfix">
-                                        <h1>Add a New Trainer</h1>
+                                        <h1>Create an Article</h1>
                                 </div>
 				{!! Form::open(['enctype'=>'multipart/form-data', 'name'=>'createArticle','route' => 'admin-store-article','method'=>'post']) !!}
 					<div class="row marginBottom">

@@ -106,15 +106,17 @@ class ArticleController extends Controller
      */
     public function edit(Request $request)
     {
-	$categories = Category::all();
-        $categorySelect = [];
-        foreach($categories as $category) {
-                $categorySelect[$category->id] = $category->name;
-        }
         $data = array(
-		'categories' => $categorySelect,
 		'article' => Article::find($request->id),
 	);
+
+	foreach(Category::all() as $category) {
+                $data['categories'][$category->id] = $category->name;
+        }
+
+        foreach(Author::all() as $author) {
+                $data['authors'][$author->id] = $author->first_name.' '.$author->last_name;
+        }
 
 	return view('admin.articles.edit',$data);
     }
@@ -128,13 +130,26 @@ class ArticleController extends Controller
      */
     public function update(Request $request)
     {
-        $article = Article::find($request->id);
-        $article->title = $request->title;
-        $article->summary = $request->summary;
-        $article->content = $request->content;
-        $article->category_id = $request->category_id;
-	$article->author_id = $request->author_id;
-        $article->save();
+	$this->validate($request, [
+                'title' => 'required',
+                'summary' => 'required',
+                'content' => 'required',
+                'category' => 'required',
+                'author' => 'required',
+        ]);
+
+        if(isset($validator) && $validator->fails()) {
+            return redirect('/admin/articles/edit',['id'=>$request->id])->withErrors($validator)->withInput();
+        } else {
+        	$article = Article::find($request->id);
+        	$article->title = $request->title;
+        	$article->summary = $request->summary;
+        	$article->content = $request->content;
+        	$article->category_id = $request->category;
+		$article->author_id = $request->author;
+        	$article->save();
+		return redirect('admin/articles');
+	}
     }
 
     /**
