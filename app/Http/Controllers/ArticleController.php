@@ -56,7 +56,7 @@ class ArticleController extends Controller
                 'content' => 'required',
                 'category' => 'required',
                 'author' => 'required',
-                'images' => 'required|image'
+                'images.*' => 'required|image'
         ]);
 
         if(isset($validator) && $validator->fails()) {

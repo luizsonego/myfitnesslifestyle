@@ -20,7 +20,7 @@
                                         @foreach ($articles as $article)
                                                 <div class="row">
                                                         <div class="col-lg-3">
-                                                                <p class="name">{{ $article->name }}</p>
+                                                                <p class="name">{{ $article->title }}</p>
                                                         </div>
                                                         <div class="col-lg-7">
                                                                 {!!$article->summary  !!}
@@ -28,7 +28,7 @@
                                                         <div class="col-lg-2">
                                                                 {{ Html::linkRoute('admin-edit-article','',['id'=>$article->id],['class'=>'adminActions glyphicon glyphicon-pencil']) }}
                                                                 {{ Html::linkRoute('admin-delete-article','',['id'=>$article->id],['class'=>'adminActions glyphicon glyphicon-remove']) }}
-                                                        	{{ Html::linkRoute('admin-article-article','',['id'=>$article->id],['class'=>'adminActions glyphicon glyphicon-ok']) }}
+                                                        	{{ Html::linkRoute('admin-activate-article','',['id'=>$article->id],['class'=>'adminActions glyphicon glyphicon-ok']) }}
 							</div>
                                                 </div>
                                         @endforeach
