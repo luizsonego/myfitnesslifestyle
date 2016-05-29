@@ -11,9 +11,9 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
+Route::get('/','IndexController@index')->name('home-page');
+
 
 // Authentication routes...
 Route::get('auth/login', 'Auth\AuthController@getLogin');

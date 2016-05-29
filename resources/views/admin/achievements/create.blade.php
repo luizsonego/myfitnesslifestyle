@@ -1,34 +1,68 @@
 @extends('layouts.admin')
 
-@section('title', 'My Fitness Lifestyle: Create a new Achievement')
+@section('title', 'My Fitness Lifestyle: Create an Achievement')
 
 @section('body')
-	<div class="container">
-		<div class="row">
-			<div class="col-lg-4">
-				<ul>
-					<li>Trainers</li>
-					<li>Authors</li>
-					<li>Articles</li>
-					<li>Categories</li>
-				</ul>
-			</div>
-			<div class="col-lg-8">
-	{!! Form::open(['enctype'=>'multipart/form-data', 'name'=>'createAchievement','route' => 'admin-store-achievement','method'=>'post']) !!}
-		<!--<input type="hidden" name="_token" value="{{ csrf_token() }}">-->
-		<label for"category">Trainer</label>
-		{!! Form::select('trainer_id',$trainers,null,['placeholder'=>'Select a Trainer','id'=>'trainer']) !!}
-		<input type="hidden" name="author_id" value="1" />
-		<label for="title">Title</label>
-		<input type="text" name="title" id="title" value="" placeholder="Title of the Article" />
-		<label for="summary">Summary</label>
-		<textarea name="summary" id="summary"></textarea>
-		<label for="images">Imaage</label>
-		<input type="file" multiple="multiple" id="images" name="images[]"/>
-		<input type="submit" value="Create" />
-	{!! Form::close() !!}
+        <div class="container-fluid paddingSideNone">
+                <div class="row">
+                        <div class="col-lg-3">
+                                @include('admin.partials.navigation')
+                        </div>
+                        <div class="col-lg-9">
+                                <div class="adminHeader">My Fitness Lifestyle CMS</div>
+                                <div class="adminTitle clearfix">
+                                        <h1>Add an achievement</h1>
+                                </div>
+                                {!! Form::open(['enctype'=>'multipart/form-data', 'name'=>'createAchievement','route' => 'admin-store-achievement','method'=>'post']) !!}
+                                         <div class="row marginBottom">
+                                                <div class="col-lg-2">
+                                                        <label for="category">Trainers</label>
+                                                </div>
+                                                <div class="col-lg-10">
+                                                        {{ Form::select('trainer',$trainers,null,['placeholder'=>'Select a Trainer','id'=>'trainer']) }}
+                                                         <span class="errors">{{$errors->first("trainer")}}</span>
+                                                </div>
+                                        </div>
+					<div class="row marginBottom">
+                                                <div class="col-lg-2">
+                                                        <label for="title">Title</label>
+                                                </div>
+                                                <div class="col-lg-10">
+                                                        {{ Form::text('title',null,['id'=>'title','placeholder'=>'Title'])}}
+                                                         <span class="errors">{{$errors->first("title")}}</span>
+                                                </div>
+                                        </div>
+                                        <div class="row marginBottom">
+                                                <div class="col-lg-2">
+                                                        <label for="Summary">Summary</label>
+                                                </div>
+                                                <div class="col-lg-10">
+                                                        {{ Form::textarea('summary',null,['id'=>'summary','placeholder'=>'Summary'])}}
+                                                         <span class="errors">{{$errors->first("summary")}}</span>
+         				</div>
+					 <div class="row marginBottom">
+                                                <div class="col-lg-2">
+                                                        <label for="images">Images</label>
+                                                </div>
+                                                <div class="col-lg-10">
+                                                        <input type="file" multiple="multiple" id="images" name="images[]"/>
+                                                         <span class="errors">{{$errors->first("images")}}</span>
+                                                </div>
+                                        </div>
+                                        <div class="row marginBottom">
+                                                <div class="col-lg-12">
+                                                        <input type="submit" value="Create" />
+                                                </div>
+                                        </div>
+                                {!! Form::close() !!}
 			</div>
 		</div>
 	</div>
+<script>
+        CKEDITOR.replace( 'summary' );
+        CKEDITOR.add;
 
+        CKEDITOR.replace( 'content' );
+        CKEDITOR.add;
+</script>
 @endsection
