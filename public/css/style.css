@@ -1,3 +1,7 @@
+.removePadding {
+  padding-left: 0;
+  padding-right: 0; }
+
 .paddingSideNone {
   padding-left: 0; }
 
@@ -118,5 +122,134 @@ input[type=submit] {
 .adminOldImage {
   display: block;
   width: 100%; }
+
+header {
+  position: relative; }
+  header h1 {
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    left: 150px;
+    text-transform: uppercase; }
+    header h1 span {
+      display: block;
+      color: #FFFFFF; }
+  header a {
+    float: left; }
+    header a img {
+      position: absolute;
+      left: 0;
+      z-index: 1; }
+  header nav {
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    top: 75px; }
+    header nav ul {
+      list-style: none;
+      display: block;
+      float: right;
+      margin: 0;
+      padding: 0; }
+      header nav ul li {
+        display: inline; }
+        header nav ul li a {
+          display: inline-block;
+          color: #FFFFFF;
+          text-transform: uppercase;
+          font-size: 16px;
+          padding: 5px 3px;
+          margin: 0 10px; }
+        header nav ul li a:hover {
+          text-decoration: none; }
+
+.homeBlog {
+  margin: 30px 0 10px 0;
+  text-transform: uppercase;
+  padding: 0 0 0 15px;
+  font-size: 32px; }
+
+article {
+  margin: 25px 0 25px 0; }
+  article img {
+    display: block;
+    width: 100%; }
+  article h3 {
+    font-size: 14px;
+    margin: 0 0 5px 0; }
+  article a {
+    font-size: 14px;
+    background: #ec232a;
+    color: #FFFFFF;
+    padding: 5px 15px;
+    display: inline-block;
+    margin: 5px 0 0 0;
+    text-transform: uppercase; }
+  article a:hover {
+    text-decoration: none;
+    color: #FFF; }
+
+.trainers {
+  background: #ec232a;
+  position: absolute;
+  top: -206px; }
+  .trainers h1 {
+    padding: 20px 0 20px 22px;
+    color: #FFF;
+    width: 93%;
+    margin: 0 auto;
+    font-size: 27px; }
+  .trainers p {
+    width: 80%;
+    margin: 0 auto 25px auto;
+    color: #FFFFFF; }
+  .trainers .trainer {
+    margin: 0 auto;
+    padding: 0 34px 25px 0;
+    width: 80%; }
+    .trainers .trainer img {
+      float: left;
+      width: 60%;
+      border-radius: 100%; }
+    .trainers .trainer a, .trainers .trainer h3 {
+      color: #FFF;
+      float: right;
+      width: 39%; }
+    .trainers .trainer h3 {
+      font-size: 16px;
+      margin: 0 0 10px 0; }
+    .trainers .trainer a {
+      font-size: 14px; }
+
+.about h2 {
+  margin: 25px 0; }
+.about p {
+  margin: 0 0 10px 0;
+  line-height: 1.6em;
+  font-size: 15px;
+  word-spacing: 1px; }
+
+.slider img {
+  width: 100%;
+  display: block; }
+
+.homeNutrition {
+  margin: 35px auto;
+  display: block;
+  position: relative; }
+
+footer .contact h4 {
+  font-size: 32px;
+  text-transform: uppercase;
+  margin: 0 0 20px 0; }
+footer .contact a {
+  display: block;
+  color: #000; }
+footer .contact p {
+  margin: 0 0 15px 0; }
+footer .location h4 {
+  font-size: 32px;
+  margin: 0 0 20px 0;
+  text-transform: uppercase; }
 
 /*# sourceMappingURL=style.css.map */
