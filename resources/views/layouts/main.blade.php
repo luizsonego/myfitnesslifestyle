@@ -7,7 +7,6 @@
                 <!-- Optional theme -->
                 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
 
-                <link rel="stylesheet" href="/css/style.css" />
                 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 
                 <!-- Latest compiled and minified JavaScript -->
@@ -15,6 +14,21 @@
                 
                 <script src="//cdn.ckeditor.com/4.5.8/standard/ckeditor.js"></script>
 
+
+		<!-- bxSlider CSS file -->
+		<link href="/bx-slider/jquery.bxslider.css" rel="stylesheet" />
+		
+
+		<link rel="stylesheet" href="/css/style.css" />
+
+		<!-- bxSlider Javascript file -->
+		<script src="/bx-slider/jquery.bxslider.min.js"></script>
+
+		<script src="https://use.fontawesome.com/f0e0b3745e.js"></script>
+		
+		<script src="http://maps.googleapis.com/maps/api/js"></script>	
+
+		<!-- <link rel="stylesheet" href="/css/style.css" />-->
                 <title>@yield('title')</title>
                 @yield('meta')
                 
