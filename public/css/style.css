@@ -363,4 +363,45 @@ footer .location #googleMap {
   width: 360px;
   height: 220px; }
 
+h1.trainersPage {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 600;
+  font-size: 32px;
+  text-transform: uppercase;
+  border-bottom: 1px solid #DADADA;
+  padding-bottom: 15px; }
+
+.trainersPage .trainer {
+  margin: 50px 0; }
+  .trainersPage .trainer a {
+    display: block;
+    text-align: center;
+    padding: 0px;
+    border-radius: 100%;
+    border: 5px solid #DADADA;
+    width: 40%;
+    margin: 0 auto;
+    height: 218px; }
+    .trainersPage .trainer a img {
+      border-radius: 100%;
+      width: 94%;
+      display: inline-block;
+      margin: 5px auto; }
+  .trainersPage .trainer a:hover {
+    border: 5px solid #EC232A; }
+  .trainersPage .trainer h3 {
+    margin: 25px auto 0 auto;
+    display: block;
+    text-align: center; }
+  .trainersPage .trainer a.seeMore {
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+    border: none;
+    height: initial;
+    width: initial; }
+  .trainersPage .trainer .description {
+    width: 80%;
+    margin: 50px auto; }
+
 /*# sourceMappingURL=style.css.map */

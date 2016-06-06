@@ -13,7 +13,10 @@
 
 
 Route::get('/','IndexController@index')->name('home-page');
-
+Route::group(['prefix' => 'trainers'], function() {
+	Route::get('/','IndexController@trainers')->name('trainers');
+	Route::get('{slug}','IndexController@trainer')->name('trainer');
+});
 
 // Authentication routes...
 Route::get('auth/login', 'Auth\AuthController@getLogin');

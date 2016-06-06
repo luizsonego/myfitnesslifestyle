@@ -3,29 +3,8 @@
 @section('title', 'My Fitness Lifestyle')
 
 @section('body')
-	<header>
-		<div class="container">
-		<div class="row">
-                        	<div class="col-lg-4">
-                                		<a href="/">
-                                        		<img src="/images/mfl-logo-red.png" alt="logo" />
-                                		</a>
-					</div>
-                        	<div class="col-lg-offset-1 col-lg-7">
-                                	<nav class="clearfix">
-                                        	<ul>
-                                                	<li><a href="">Home</a></li>
-                                                	<li><a href="">Trainer</a></li>
-                                                	<li><a href="">Personal Training Studio</a></li>
-                                                	<li class="blog"><a href="">Blog</a></li>    
-                                                	<li><a href=""><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                                                	<li class="phone"><a href="">2346690</a></li>
-                                        	</ul>
-                                	</nav>
-                        	</div>
-                </div>
-		</div>
-	</header>
+	@include('partials/navigation')
+	
         <div class="container-fluid">
                 <div class="row">
 			<div class="col-lg-12 removePadding">
@@ -40,7 +19,6 @@
 						<h1><span class="stay">Stay</span> <span class="health">Healthy</span> <span class="and">and</span> <span class="fit">Fit<span></h1>
 						<h2>Your Body is a Reflection of your Lifestyle!</h2>
 					</div>
-					<!--<img src="/images/slider/TAUxxt1kzT.jpg" alt="Image 1" /> -->
 				</div>
 			</div>
              	</div>
@@ -120,60 +98,22 @@
 				</div>
 			</div>
 		</div>
-
-		<footer>
-			<div class="row">
-				<div class="col-lg-3">
-					<div class="contact">
-						<h4>Contact Us</h4>
-						<p>
-							Reach us <br />
-							<a class="phone">07023848</a>
-							<a>email@email.com</a>
-						</p>
-						<p>
-							Gym Timings <br />
-							Monday-Sunday <br />
-							9:00 AM - 10:00 PM
-						</p>
-						<p>
-							Gym Address <br />
-							104 Nant Road, ZX12 456
-						</p>
-					</div>
-				</div>
-				<div class="col-lg-4">
-					<div class="location">
-						<h4>Gym Location</h4>
-						<div id="googleMap"></div>
-					</div>
-				</div>
-				<div class="col-lg-5">
-				</div>
-			</div>
-			
-		</footer>
 	</div>
-<script>
+@include('partials/footer');
+	
+@endsection
 
-function initialize() {
-  var mapProp = {
-    	center:new google.maps.LatLng(51.567299, -0.212384),
-    	zoom:15,
-    	mapTypeId:google.maps.MapTypeId.ROADMAP,
-	disableDefaultUI:true
-  };
-  var map=new google.maps.Map(document.getElementById("googleMap"), mapProp);
-}
-	
-$(document).ready(function(){
-  	$('.bxslider').bxSlider({
-		pager: false,
-		auto: true,
-		captions: false,
-	});
-	
-	initialize();
-});
-</script>
+@section('js')
+	<script type="text/javascript">
+		@include('partials/commonjs')
+
+		$(document).ready(function(){
+        		$('.bxslider').bxSlider({
+                		pager: false,
+                		auto: true,
+                		captions: false,
+        		}); 
+        		initialize();
+		});
+	</script>
 @endsection

@@ -21,4 +21,16 @@ class IndexController extends Controller
 
 		return view('index.index',$data); 
 	}
+
+	/**
+         * Trainers Page
+         * @return \Illuminate\Http\Response
+         */
+	public function trainers() {
+		$data = array(
+			'trainers' => Trainer::all(),
+		);
+		
+		return view('index.trainers',$data);
+	}
 }
