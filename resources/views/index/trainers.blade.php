@@ -14,18 +14,18 @@
 		</div>
 
 		<div class="row trainersPage">
-			@foreach ($trainers as $trainer)
-				<div class="col-lg-6">
-					<div class="trainer clearfix">
+			@for($i=0;$i<count($trainers);$i++)
+				<div class="col-lg-6 col-md-6 col-sm-6">
+					<div class="{{$i%2!=0?'before':''}} trainer clearfix">
 						<a>
-                         				<img  alt="{{$trainer->first_name}} {{$trainer->last_name}}" src="/images/trainers/{{$trainer->id}}/{{$trainer->avatar}}"  />
+                         				<img  alt="{{$trainers[$i]->first_name}} {{$trainers[$i]->last_name}}" src="/images/trainers/{{$trainers[$i]->id}}/{{$trainers[$i]->avatar}}"  />
 						</a>
-                        			<h3>{{ $trainer->first_name}} {{$trainer->last_name}}</h3>
-						<div class="description">{!! $trainer->description !!}</div>
-						<a class="seeMore" ref="/trainer/{{$trainer->first_name.'-'.$trainer->last_name}}">See More</a>
+                        			<h3>{{ $trainers[$i]->first_name}} {{$trainers[$i]->last_name}}</h3>
+						<div class="description">{!! $trainers[$i]->description !!}</div>
+						<a class="seeMore" ref="/trainer/{{$trainers[$i]->first_name.'-'.$trainers[$i]->last_name}}">See More</a>
 					</div>
 				</div>
-			@endforeach
+			@endfor
 		</div>
 	</div>
 

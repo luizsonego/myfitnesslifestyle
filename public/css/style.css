@@ -366,7 +366,7 @@ footer .location #googleMap {
 h1.trainersPage {
   font-family: 'Open Sans', sans-serif;
   font-weight: 600;
-  font-size: 32px;
+  font-size: 36px;
   text-transform: uppercase;
   border-bottom: 1px solid #DADADA;
   padding-bottom: 15px; }
@@ -392,16 +392,37 @@ h1.trainersPage {
   .trainersPage .trainer h3 {
     margin: 25px auto 0 auto;
     display: block;
-    text-align: center; }
+    text-align: center;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 600; }
   .trainersPage .trainer a.seeMore {
     display: block;
     margin: 0 auto;
     text-align: center;
     border: none;
     height: initial;
-    width: initial; }
+    width: initial;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: #000000;
+    border-top: 1px solid #DADADA;
+    width: 30%;
+    border-radius: 0;
+    padding: 10px 0; }
+  .trainersPage .trainer a.seeMore:hover {
+    text-decoration: none;
+    color: #EC232A; }
   .trainersPage .trainer .description {
     width: 80%;
-    margin: 50px auto; }
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 300;
+    margin: 30px auto 20px auto; }
+.trainersPage .trainer.before::before {
+  border-right: 1px solid #DADADA;
+  position: absolute;
+  height: 30%; }
 
 /*# sourceMappingURL=style.css.map */
