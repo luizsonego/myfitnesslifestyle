@@ -420,9 +420,42 @@ h1.trainersPage {
     font-size: 14px;
     font-weight: 300;
     margin: 30px auto 20px auto; }
+    .trainersPage .trainer .description p {
+      font-family: inherit;
+      font-size: inherit;
+      font-weight: inherit; }
 .trainersPage .trainer.before::before {
   border-right: 1px solid #DADADA;
   position: absolute;
   height: 30%; }
+.trainersPage .trainer.one a {
+  width: 23%;
+  height: 260px;
+  border: 5px solid #EC232A; }
+.trainersPage .trainer.one a.seeMore {
+  border: inherit;
+  height: inherit; }
+.trainersPage .trainer.one .description {
+  width: 30%; }
+  .trainersPage .trainer.one .description p {
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit; }
+
+article {
+  margin: 20px 0;
+  position: relative;
+  width: 40%;
+  border: 1px solid #EFEFEF;
+  padding: 10px 20px; }
+  article img {
+    width: 100%;
+    display: block; }
+
+article.left {
+  float: left; }
+
+article.right {
+  float: right; }
 
 /*# sourceMappingURL=style.css.map */

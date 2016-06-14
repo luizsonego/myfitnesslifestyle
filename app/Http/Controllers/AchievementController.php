@@ -49,7 +49,7 @@ class AchievementController extends Controller
     public function store(Request $request)
     {
         $achievement = new Achievement();
-        $achievement->trainer_id = $request->trainer_id;
+        $achievement->trainer_id = $request->trainer;
         $achievement->title = $request->title;
         $achievement->summary = $request->summary;
         $achievement->save();
@@ -109,7 +109,7 @@ class AchievementController extends Controller
      */
     public function destroy(Request $request)
     {
-        $achievement = Article::find($achievement->id);
+        $achievement = Achievement::find($request->id);
         \File::deleteDirectory('images/achievements/'.$achievement->id);
         $achievement->delete();
     }

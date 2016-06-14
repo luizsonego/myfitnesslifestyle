@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Trainer;
 use App\Article;
+use App\Achievement;
 
 class IndexController extends Controller
 {
@@ -32,5 +33,23 @@ class IndexController extends Controller
 		);
 		
 		return view('index.trainers',$data);
+	}
+
+	/**
+         * Trainer Page
+         * @return \Illuminate\Http\Response
+         */
+	public function trainer($slug) {
+		
+		$slug = explode('-',$slug);
+		$trainer = Trainer::where(['first_name' => $slug[0], 'last_name' => $slug[1]])->first();
+		$achievements = Achievement::where(['trainer_id' => $trainer->id])->get();
+
+		$data = array(
+			'trainer' => $trainer,
+			'achievements' => $achievements
+		);
+
+		return view('index.trainer',$data);
 	}
 }
