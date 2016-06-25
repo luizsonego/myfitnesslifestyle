@@ -68,6 +68,7 @@ class ArticleController extends Controller
 		$article->content = $request->content;
 		$article->category_id = $request->category;
 		$article->author_id = $request->author;
+		$article->slug = str_slug($request->title);
 		$article->save();
 
 		\File::makeDirectory('images/articles/'.$article->id);
@@ -147,6 +148,7 @@ class ArticleController extends Controller
         	$article->content = $request->content;
         	$article->category_id = $request->category;
 		$article->author_id = $request->author;
+		$article->slug = str_slug($request->title);
         	$article->save();
 		return redirect('admin/articles');
 	}

@@ -62,6 +62,9 @@
     .adminTitle .createLink a:hover {
       text-decoration: none; }
 
+.margin-top {
+  margin-top: 75px; }
+
 .adminContentContainer {
   margin: 25px 0 15px 0;
   border: 1px solid #EFEFEF;
@@ -442,20 +445,102 @@ h1.trainersPage {
     font-size: inherit;
     font-weight: inherit; }
 
-article {
+.achievements .month {
+  display: block;
+  width: 18%;
+  margin: 0 auto 30px auto;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 300;
+  border: 1px solid #EFEFEF;
+  text-align: center;
+  padding: 10px 0; }
+.achievements article {
   margin: 20px 0;
   position: relative;
-  width: 40%;
+  width: 47.8%;
   border: 1px solid #EFEFEF;
   padding: 10px 20px; }
-  article img {
+  .achievements article h3 {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 600; }
+  .achievements article .date {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    margin: 0 0 5px 0; }
+  .achievements article img {
+    width: 100%;
+    display: block;
+    margin: 0 0 5px 0; }
+  .achievements article .description {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 300; }
+    .achievements article .description p {
+      font-family: inherit;
+      font-size: inherit;
+      font-weight: inherit; }
+.achievements article.left {
+  float: left; }
+.achievements article.right {
+  float: right;
+  top: 35px; }
+.achievements article::before {
+  background: #EC232A;
+  border-radius: 50%;
+  content: "";
+  display: block;
+  height: 10px;
+  position: absolute;
+  top: 22px;
+  width: 10px;
+  z-index: 2; }
+.achievements article.left::before {
+  right: -6.3%; }
+.achievements article.right::before {
+  left: -6.4%; }
+.achievements article::after {
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg);
+  background: #FFF;
+  content: "";
+  display: block;
+  height: 14px;
+  position: absolute;
+  width: 14px;
+  z-index: 0; }
+.achievements article.left::after {
+  border-right: 1px solid #E5E5E5;
+  border-top: 1px solid #E5E5E5;
+  right: -8px;
+  top: 20px; }
+.achievements article.right::after {
+  border-left: 1px solid #E5E5E5;
+  border-bottom: 1px solid #E5E5E5;
+  left: -8px;
+  top: 20px; }
+
+.achievements::after {
+  background: #EFEFEF;
+  content: "";
+  display: block;
+  height: 100%;
+  left: 50%;
+  margin-left: -2px;
+  position: absolute;
+  top: 42px;
+  width: 2px;
+  z-index: 0; }
+
+article.blog {
+  margin: 20px auto; }
+  article.blog img {
     width: 100%;
     display: block; }
-
-article.left {
-  float: left; }
-
-article.right {
-  float: right; }
 
 /*# sourceMappingURL=style.css.map */

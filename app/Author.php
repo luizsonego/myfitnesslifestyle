@@ -21,7 +21,7 @@ class Author extends Model
      *
      * @var array
      */
-    protected $fillable = ['user_id','first_name','last_name','avatar','description'];
+    protected $fillable = ['user_id','first_name','last_name','avatar','description','slug'];
 
     /**
      * The attributes that should be mutated to dates.

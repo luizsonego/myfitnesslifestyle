@@ -18,6 +18,7 @@ class CreateArticlesTable extends Migration
             $table->bigInteger('author_id');
             $table->string('images',255);
 	    $table->string('title',255);
+	    $table->string('slug',255);
             $table->text('summary');
 	    $table->text('content');
 	    $table->tinyInteger('active');

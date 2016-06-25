@@ -25,24 +25,42 @@
                                 </div>
                 </div>
 		<div class="row">
-		<div class="col-lg-offset-1 col-lg-10">
+		<div class="col-lg-offset-2 col-lg-8">
 		<div class="achievements clearfix">
-		@for($i=1;$i<count($achievements);$i++)
+		@foreach($achievements as $month => $achievement)
+		<div class="month">{{$month}}</div>
+		@for($i=1;$i<count($achievement);$i++)
 			<article class="{{($i%2==0)?'right':'left'}}">
 				<div class="row">
 				<div class="col-md-12">
-					<h3>{{$achievements[$i]->title}}</h3>
-					<div class="date">{{$achievements[$i]->created_at}}</div>
-					<img src="/images/achievements/{{$achievements[$i]->id}}/{{$achievements[$i]->images[0]}}" alt="{{$achievements[$i]->title}}" />
-					<div class="description">{!! $achievements[$i]->summary !!}</div>
+					<h3>{{$achievement[$i]->title}}</h3>
+					<div class="date">{{date('Y-m-d',strtotime($achievement[$i]->created_at))}}</div>	
+					<img src="/images/achievements/{{$achievement[$i]->id}}/{{$achievement[$i]->images[0]}}" alt="{{$achievement[$i]->title}}" />
+					<div class="description">{!! $achievement[$i]->summary !!}</div>
 				</div>
 				</div>
 			</article>
 		@endfor
+		@endforeach
 		</div>
 		</div>	
 		</div>
         </div>
 
-        @include('partials/footer');
+        @include('partials/footer',['trainerDetails'=>true])
+@endsection
+
+@section('js')
+        <script type="text/javascript">
+                @include('partials/commonjs')
+
+                $(document).ready(function(){
+                        $('.bxslider').bxSlider({
+                                pager: false,
+                                auto: true,
+                                captions: false,
+                        }); 
+                        initialize();
+                });
+        </script>
 @endsection

@@ -43,7 +43,12 @@ class IndexController extends Controller
 		
 		$slug = explode('-',$slug);
 		$trainer = Trainer::where(['first_name' => $slug[0], 'last_name' => $slug[1]])->first();
-		$achievements = Achievement::where(['trainer_id' => $trainer->id])->get();
+		$achievements = Achievement::where(['trainer_id' => $trainer->id])
+						->orderBy('created_at','desc')
+						->get()
+						->groupBy(function($date) {
+        						return \Carbon\Carbon::parse($date->created_at)->format('Y'); // grouping by years
+    						});
 
 		$data = array(
 			'trainer' => $trainer,
@@ -51,5 +56,17 @@ class IndexController extends Controller
 		);
 
 		return view('index.trainer',$data);
+	}
+	
+	/**
+         * Blogs Page
+	 * @return \Illuminate\Http\Response
+	 */
+	public function blogs() {
+		$data = array (
+			'articles' => Article::all()
+		);
+		
+		return view('index.blogs',$data);
 	}
 }

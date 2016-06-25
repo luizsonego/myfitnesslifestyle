@@ -61,6 +61,7 @@ class AuthorController extends Controller
                 $author = Author::create([
                         'first_name' => $request->first_name,
                         'last_name' => $request->last_name,
+			'slug' => str_slug($request->first_name.' '.$request->last_name),
                         'description' => $request->description,
                         'avatar' => $avatarName,
                         'user_id'=> $user->id,
@@ -125,7 +126,8 @@ class AuthorController extends Controller
                         'first_name' => $request->first_name,
                         'last_name' => $request->last_name,
                         'description' => $request->description,
-                        'avatar' => $avatar
+                        'avatar' => $avatar,
+			'slug' => str_slug($request->first_name.' '.$request->last_name)
                 ]);
 
                 return redirect('admin/authors');
