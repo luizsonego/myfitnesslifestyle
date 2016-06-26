@@ -21,7 +21,7 @@ class Article extends Model
      *
      * @var array
      */
-    protected $fillable = ['images','name','title','summary','content','category_id','author_id'];
+    protected $fillable = ['slug','images','name','title','summary','content','category_id','author_id'];
 
     /**
      * The attributes that should be mutated to dates.

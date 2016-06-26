@@ -7,6 +7,7 @@ use App\Http\Requests;
 use App\Trainer;
 use App\Article;
 use App\Achievement;
+use App\Category;
 
 class IndexController extends Controller
 {
@@ -62,11 +63,39 @@ class IndexController extends Controller
          * Blogs Page
 	 * @return \Illuminate\Http\Response
 	 */
-	public function blogs() {
-		$data = array (
-			'articles' => Article::all()
-		);
+	public function blogs(Request $request)
+	{
+
+		if(isset($request->category) && !empty($request->category)) {
+			$category = Category::where(['slug'=>$request->category])->find(1);
+			$articles = Article::where(['category_id'=> $category->id])->paginate(1);
+		} else {
+			$articles = Article::paginate(2);
+		}
 		
+		$data = array (
+			'articles' => $articles,
+		);
+
+		foreach(Category::all() as $categories) {
+                	$data['categories'][$categories->id] = $categories->name;
+        	}	
 		return view('index.blogs',$data);
+	}
+	
+	/**
+         * Blog Page
+	 * @return \Illuminate\Http\Response
+	 */
+	public function blog(Request $request)
+	{
+		$article = [];
+		if(isset($request->slug) && !empty($request->slug)) {
+			$article = Article::where(['slug'=> $request->slug])->first();
+		} 
+		$data = array (
+                        'article' => $article,
+                );
+		return view('index.blog',$data);
 	}
 }

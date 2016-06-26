@@ -537,10 +537,15 @@ h1.trainersPage {
   width: 2px;
   z-index: 0; }
 
-article.blog {
+article .blog {
   margin: 20px auto; }
-  article.blog img {
+  article .blog img {
     width: 100%;
     display: block; }
+
+article.individual .slider {
+  width: 45%;
+  float: left;
+  margin: 20px; }
 
 /*# sourceMappingURL=style.css.map */

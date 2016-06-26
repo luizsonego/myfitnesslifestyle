@@ -17,7 +17,8 @@ Route::group(['prefix' => 'trainers'], function() {
 	Route::get('/','IndexController@trainers')->name('trainers');
 	Route::get('{slug}','IndexController@trainer')->name('trainer');
 });
-Route::get('blogs','IndexController@blogs')->name('blogs-page');
+Route::get('blogs/{category?}','IndexController@blogs')->name('blogs-page');
+Route::get('blog/{slug}','IndexController@blog')->name('blog-page');
 
 // Authentication routes...
 Route::get('auth/login', 'Auth\AuthController@getLogin');
