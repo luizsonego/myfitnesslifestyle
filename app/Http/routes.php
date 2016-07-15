@@ -21,15 +21,15 @@ Route::get('blogs/{category?}','IndexController@blogs')->name('blogs-page');
 Route::get('blog/{slug}','IndexController@blog')->name('blog-page');
 
 // Authentication routes...
-Route::get('auth/login', 'Auth\AuthController@getLogin');
-Route::post('auth/login', 'Auth\AuthController@postLogin');
-Route::get('auth/logout', 'Auth\AuthController@getLogout');
+Route::get('login', 'Auth\AuthController@getLogin')->name('authenticate');
+Route::post('auth/login', 'Auth\AuthController@postLogin')->name('admin-login');
+Route::get('auth/logout', 'Auth\AuthController@getLogout')->name('admin-logout');
 
 // Registration routes...
 Route::get('auth/register', 'Auth\AuthController@getRegister');
 Route::post('auth/register', 'Auth\AuthController@postRegister');
 
-Route::get('cms/login','CmsController@login')->name('admin-login');
+//Route::get('cms/login','CmsController@login')->name('admin-login');
 
 Route::group(['prefix' => 'admin'], function() {
 	Route::get('/','AdminController@index')->name('admin-dashboard');

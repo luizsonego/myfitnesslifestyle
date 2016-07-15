@@ -1,23 +1,43 @@
-<!-- resources/views/auth/login.blade.php -->
+@extends('layouts.admin')
 
-<form method="POST" action="/auth/login">
-    {!! csrf_field() !!}
+@section('title', 'My Fitness Lifestyle: CMS')
 
-    <div>
-        Email
-        <input type="email" name="email" value="{{ old('email') }}">
-    </div>
-
-    <div>
-        Password
-        <input type="password" name="password" id="password">
-    </div>
-
-    <div>
-        <input type="checkbox" name="remember"> Remember Me
-    </div>
-
-    <div>
-        <button type="submit">Login</button>
-    </div>
-</form>
+@section('body')
+        <div class="container-fluid paddingSideNone">
+                <div class="row">
+                        <div class="col-lg-12">
+                                Login
+                        </div>
+                </div>
+		<div class="row">
+			<div class="col-lg-12">
+				{!! Form::open(['enctype'=>'multipart/form-data', 'name'=>'createTrainer','route' => 'admin-login','method'=>'post']) !!}
+					<div class="row marginBottom">
+                                                <div class="col-lg-2">
+							{!! csrf_field() !!}
+                                                        <label for="Email">Email</label>
+                                                </div>
+                                                <div class="col-lg-10">
+                                                        {{ Form::text('email',old("email"),['id'=>'email','placeholder'=>'Email'])}}
+                                                         <span class="errors">{{old("email")}}</span>
+                                                </div>
+                                        </div>
+					<div class="row marginBottom">
+                                                 <div class="col-lg-2">
+                                                         <label for="Email">Password</label>
+                                                 </div>
+                                                 <div class="col-lg-10">
+                                                         {{ Form::text('password',null,['id'=>'password','placeholder'=>'Password'])}}
+                                                          <span class="errors">{{old("email")}}</span>
+                                                  </div>
+                                          </div>
+					<div class="row marginBottom">
+						<div class="col-lg-12">
+							<button type="submit">Login</button>
+						</div>
+					</div>
+				{!! Form::close() !!}
+			</div>
+		</div>
+        </div>
+@endsection

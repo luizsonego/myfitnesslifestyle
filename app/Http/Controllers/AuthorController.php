@@ -114,7 +114,7 @@ class AuthorController extends Controller
                 $avatar = '';
                 if($request->hasFile('avatar')) {
                         $avatar = $this->generateRandomString().'.'.pathinfo($request->avatar->getClientOriginalNAme(), PATHINFO_EXTENSION);
-                        \File::delete('images/authors/'.$author->id.'/'.$trainer->avatar);
+                        \File::delete('images/authors/'.$author->id.'/'.$author->avatar);
                         $img = \Image::make($request->avatar)->save('images/authors/'.$author->id.'/'.$avatar);
                 } else {
                         $avatar = $author->avatar;
